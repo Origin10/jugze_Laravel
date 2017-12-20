@@ -13,7 +13,7 @@ class IssueController extends Controller
         $votes = "888";
         return view('issue',compact('id','title','start','end',"votes"));
     }
-    function search($search){
+    function search($search=0){
         return view('search',compact('search'));
 
     }

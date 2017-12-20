@@ -17,7 +17,7 @@ class CreateIssuesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('title',50);
-            $table->datetime('endTime');
+            $table->datetime('endTime')->nullable();
             $table->integer('votes')->unsigned();
         });
     }
