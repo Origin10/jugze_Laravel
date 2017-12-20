@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('issue/{id}','IssueController@index')
+->name('issue.index');
+
+
+Route::get('search/{search?}','IssueController@search');
