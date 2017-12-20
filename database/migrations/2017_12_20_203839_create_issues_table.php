@@ -16,6 +16,9 @@ class CreateIssuesTable extends Migration
         Schema::create('issues', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('title',50);
+            $table->datetime('endTime');
+            $table->integer('votes')->unsigned();
         });
     }
 
