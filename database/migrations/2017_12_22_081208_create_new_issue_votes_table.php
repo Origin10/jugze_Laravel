@@ -18,7 +18,7 @@ class CreateNewIssueVotesTable extends Migration
             $table->integer('nivId');
             $table->integer('niId');
             $table->integer('iId')->unsigned();
-            $table->integer('nivTitle');
+            $table->string('nivTitle');
             $table->timestamps();
 
             $table->primary(['nivId', 'niId', 'iId']);
