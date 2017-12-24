@@ -14,11 +14,18 @@ class CreateIssuesTable extends Migration
     public function up()
     {
         Schema::create('issues', function (Blueprint $table) {
-            $table->increments('id');
+
+            $table->increments('iId');
+            $table->integer('uId')->unsigned();
+            $table->string('iTitle');
+            $table->string('iDescription');
+            $table->integer('iCheckPoint')->unsigned();
+            $table->integer('iCheckCycle')->default(1);
             $table->timestamps();
-            $table->string('title',50);
-            $table->datetime('endTime')->nullable();
-            $table->integer('votes')->unsigned();
+
+            $table->foreign('uId')
+                ->references('uId')->on('users')
+                ->onDelete('cascade');
         });
     }
 
