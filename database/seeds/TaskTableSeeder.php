@@ -16,15 +16,16 @@ class TaskTableSeeder extends Seeder
 
         //DB::table("tasks")->delete();
         Task::truncate();
-        for ($i=0;$i<50;$i++){
-            Task::create([
-                'title' => $faker->name,
-                'sub_title' => $faker->company,
-                'content' => $faker->address,
-                'page_view' => rand(0,1000),
-                'is_feature' => false,
-                'created_at' => Carbon\Carbon::now()->addDays(rand(0,10))
-            ]);
-        }
+//        for ($i=0;$i<50;$i++){
+//            Task::create([
+//                'title' => $faker->name,
+//                'sub_title' => $faker->company,
+//                'content' => $faker->address,
+//                'page_view' => rand(0,1000),
+//                'is_feature' => false,
+//                'created_at' => Carbon\Carbon::now()->addDays(rand(0,10))
+//            ]);
+//        }
+        factory(Task::class, 50)->create();
     }
 }

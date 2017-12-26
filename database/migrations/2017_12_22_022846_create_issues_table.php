@@ -14,18 +14,21 @@ class CreateIssuesTable extends Migration
     public function up()
     {
         Schema::create('issues', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
 
-            $table->increments('iId');
-            $table->integer('uId')->unsigned();
-            $table->string('iTitle');
-            $table->string('iDescription');
-            $table->integer('iCheckPoint')->unsigned();
-            $table->integer('iCheckCycle')->default(1);
+            /**
+             * 說明：議題
+             */
+            $table->increments('id');//ID
+            $table->integer('user_id')->unsigned();//創辦人
+            $table->string('title');//標題
+            $table->string('description');//描述
+            $table->integer('check_point')->unsigned();//第一階段結束時間 
+            $table->integer('check_cycle')->default(1);//第一階段長度
+            $table->integer('vote_cycle')->default(1); //第二階段長度
             $table->timestamps();
 
-            $table->foreign('uId')
-                ->references('uId')->on('users')
-                ->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

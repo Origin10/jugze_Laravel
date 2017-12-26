@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Faker\Factory;
 use Illuminate\Support\ServiceProvider;
 use Schema;
 
@@ -25,5 +26,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->singleton(\Faker\Generator::class, function (){
+            return Factory::create("zh_TW");
+        });
     }
 }

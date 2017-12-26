@@ -14,10 +14,14 @@ class CreateNicknamesTable extends Migration
     public function up()
     {
         Schema::create('nicknames', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
 
-            $table->increments('nId');
-            $table->string('nName');
-            $table->text('nImg');
+            /**
+             * 說明：暱稱，在議題中亂數取得其中一隻動物
+             */
+            $table->increments('id');//ID
+            $table->string('name');//動物名
+            $table->integer('img');//存放第幾張圖片
             $table->timestamps();
         });
     }
