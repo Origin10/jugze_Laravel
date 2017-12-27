@@ -28,7 +28,7 @@ class CreateSubIssueVoteTable extends Migration
             $table->string('title');//提案之標題
             $table->timestamps();
 
-            $table->foreign('issues_id')->references('id')->on('issues')->onDelete('cascade');
+            $table->foreign('issue_id')->references('id')->on('issues')->onDelete('cascade');
             $table->foreign('sub_issue_id')->references('id')->on('sub_issues')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

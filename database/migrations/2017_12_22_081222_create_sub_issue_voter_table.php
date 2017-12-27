@@ -30,7 +30,7 @@ class CreateSubIssueVoterTable extends Migration
             $table->timestamps();
 
             $table->foreign('issue_id')->references('id')->on('issues')->onDelete('cascade');
-            $table->foreign('new_issue_id')->references('id')->on('new_issues')->onDelete('cascade');
+            $table->foreign('sub_issue_id')->references('id')->on('sub_issues')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('voter_id')->references('id')->on('users')->onDelete('cascade');
         });

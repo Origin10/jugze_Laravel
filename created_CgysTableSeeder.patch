@@ -1,0 +1,86 @@
+Index: database/factories/UserFactory.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- database/factories/UserFactory.php	(revision 21e7ebe85220a222fdfd8b032dc41871d0f9a4a2)
++++ database/factories/UserFactory.php	(revision 21e7ebe85220a222fdfd8b032dc41871d0f9a4a2)
+@@ -1,25 +0,0 @@
+-<?php
+-
+-use Faker\Generator as Faker;
+-
+-/*
+-|--------------------------------------------------------------------------
+-| Model Factories
+-|--------------------------------------------------------------------------
+-|
+-| This directory should contain each of the model factory definitions for
+-| your application. Factories provide a convenient way to generate new
+-| model instances for testing / seeding your application's database.
+-|
+-*/
+-
+-$factory->define(App\User::class, function (Faker $faker) {
+-    static $password;
+-
+-    return [
+-        'name' => $faker->name,
+-        'email' => $faker->unique()->safeEmail,
+-        'password' => $password ?: $password = bcrypt('secret'),
+-        'remember_token' => str_random(10),
+-    ];
+-});
+Index: database/migrations/2017_12_22_081208_create_sub_issue_vote_table.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- database/migrations/2017_12_22_081208_create_sub_issue_vote_table.php	(revision 21e7ebe85220a222fdfd8b032dc41871d0f9a4a2)
++++ database/migrations/2017_12_22_081208_create_sub_issue_vote_table.php	(date 1514378737000)
+@@ -28,7 +28,7 @@
+             $table->string('title');//提案之標題
+             $table->timestamps();
+ 
+-            $table->foreign('issues_id')->references('id')->on('issues')->onDelete('cascade');
++            $table->foreign('issue_id')->references('id')->on('issues')->onDelete('cascade');
+             $table->foreign('sub_issue_id')->references('id')->on('sub_issues')->onDelete('cascade');
+             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+         });
+Index: database/migrations/2017_12_22_081222_create_sub_issue_voter_table.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- database/migrations/2017_12_22_081222_create_sub_issue_voter_table.php	(revision 21e7ebe85220a222fdfd8b032dc41871d0f9a4a2)
++++ database/migrations/2017_12_22_081222_create_sub_issue_voter_table.php	(date 1514378737000)
+@@ -30,7 +30,7 @@
+             $table->timestamps();
+ 
+             $table->foreign('issue_id')->references('id')->on('issues')->onDelete('cascade');
+-            $table->foreign('new_issue_id')->references('id')->on('new_issues')->onDelete('cascade');
++            $table->foreign('sub_issue_id')->references('id')->on('sub_issues')->onDelete('cascade');
+             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+             $table->foreign('voter_id')->references('id')->on('users')->onDelete('cascade');
+         });
+Index: database/seeds/DatabaseSeeder.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- database/seeds/DatabaseSeeder.php	(revision 21e7ebe85220a222fdfd8b032dc41871d0f9a4a2)
++++ database/seeds/DatabaseSeeder.php	(date 1514379630000)
+@@ -11,8 +11,11 @@
+      */
+     public function run()
+     {
+-        // $this->call(UsersTableSeeder::class);
+-        $this->call(TaskTableSeeder::class);
++        //$this->call(UsersTableSeeder::class);
++
+ //        $this->call(IssuesTableSeeder::class);
++        $this->call(TaskTableSeeder::class);
++        $this->call(CgysTableSeeder::class);
++
+     }
+ }
