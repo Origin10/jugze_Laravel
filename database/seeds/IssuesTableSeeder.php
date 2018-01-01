@@ -17,7 +17,7 @@ class IssuesTableSeeder extends Seeder
         Issue::truncate();
         DB::table("issues")->delete();
         for ($i=0;$i<50;$i++){
-            Task::create([
+            Issue::create([
                 'iTitle' => $faker->name,
                 'iDescription' => $faker->company,
                 'iCheckPoint' => rand(1,2),

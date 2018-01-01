@@ -20,3 +20,15 @@ Route::get('issue/{id}','IssueController@index')
 
 
 Route::get('search/{search?}','IssueController@search');
+
+Route::get('showCgy',function(){
+   $cgy = App\Cgy::find(1);
+   dd($cgy->opened_at->diffForHumans());
+});
+
+//Route::resource('cgy',"CgyController");
+
+Route::get('saveCgy',function (\Illuminate\Http\Request $request){
+    $cgy = \App\Cgy::create($request->all());
+    dd($cgy);
+});

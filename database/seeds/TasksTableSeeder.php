@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use  \App\Task;
 use Faker\Factory as Faker;
-class TaskTableSeeder extends Seeder
+class TasksTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

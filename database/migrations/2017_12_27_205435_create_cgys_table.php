@@ -14,8 +14,7 @@ class CreateCgysTable extends Migration
             $table->string('title',255);
             $table->string('desc',255);
             $table->boolean('enabled');
-            $table->timestamp('created_at');//SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'created_at'
-            $table->timestamp('updated_at');
+            $table->timestamp('opened_at');
             $table->timestamps();
         });
     }

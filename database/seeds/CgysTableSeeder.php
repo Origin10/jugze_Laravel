@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Cgys;
+use App\Cgy;
 class CgysTableSeeder extends Seeder
 {
     /**
@@ -12,7 +12,7 @@ class CgysTableSeeder extends Seeder
     public function run()
     {
         //
-        Cgys::truncate();
-        factory(User::class, 150)->create();
+        Cgy::truncate();
+        factory(Cgy::class, 150)->create();
     }
 }
