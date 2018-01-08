@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cgy;
 use App\Task;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,7 @@ class CgyController extends Controller
     public function store(Request $request)
     {
         //
-        Task::create($request->all());
+        Cgy::create($request->all());
     }
 
     /**
