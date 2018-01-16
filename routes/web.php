@@ -14,10 +14,25 @@ use App\Cgy;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
-Route::resource('tasks','TaskController');
+Route::get('Form', function () {
+    return view('Form');
+});
+
+Route::post('foo/bar', function (\Illuminate\Http\Request $request) {
+    dd($request->all());
+});
+
+
+Route::get('child', function () {
+    $items = ['orange','apple','strawberry','mac'];
+    return view('child',['result'=>'<h3>child rs</h3>','items'=>$items]);
+});
+
+Route::resource('task','TaskController');
+
 
 Route::get('issue/{id}','IssueController@index')
 ->name('issue.index');
@@ -40,7 +55,8 @@ Route::get('showCgy',function(){
 
 Route::get('saveCgy',function (\Illuminate\Http\Request $request){
     $cgy = Cgy::create($request->all());
-    dd($cgy);
+    $cgy = Cgy::find($cgy->id); //已經確定id再回傳
+    dd($cgy->title);
 });
 
 
@@ -103,19 +119,24 @@ Route::get('addTask', function (){
 //不懂為什麼要用  $task = Task::find($id);
 Route::get('taskUpdate/{id}', function(\Illuminate\Http\Request $request, $id){
     $task = Task::find($id);
+//    $task->title = "my title";
+//    $task->save();
 //        $task->update($request->only());
-    $result = $request->only('title','sub_title');
+    $inputs = $request->only('title','sub_title'); //前台輸入的過濾器
 //    dd($result);
-    $result = $request->all();
-    dd($result);
+//    $result = $request->all();
+    $task->update($inputs);
+    dd($inputs);
 });
 
 //homework
 
 Route::get('cgyUpdate/{id}', function (\Illuminate\Http\Request $request, $id){
     $cgy = Cgy::find($id);
-    $rs = $request->only('title','enable');
-    dd($rs);
+    $inputs = $request->only('title','enable');
+    $cgy->title = $inputs['title'];
+    $cgy->save();
+    dd($inputs);
 });
 
 Route::get('isFeature', function (){

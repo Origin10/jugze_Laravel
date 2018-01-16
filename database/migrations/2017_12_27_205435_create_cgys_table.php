@@ -11,10 +11,10 @@ class CreateCgysTable extends Migration
     {
         Schema::create('cgys', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title',255);
-            $table->string('desc',255);
-            $table->boolean('enabled');
-            $table->timestamp('opened_at');
+            $table->string('title',255)->default('default');
+            $table->string('desc',255)->nullable();
+            $table->boolean('enabled')->default(true);
+            $table->timestamp('opened_at')->default(\Carbon\Carbon::now());
             $table->timestamps();
         });
     }

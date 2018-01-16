@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout.app')
 
 @section('title')
  基本2
@@ -88,6 +88,7 @@
                                     <div>{{ $task->page_view }}</div>
                                 </td>
                                 <td class="table-text">
+                                    {{--<div>{{ $task->is_feature }}</div>--}}
                                     @if( $task->is_feature == true)
                                         <div>精選</div>
                                     @else
