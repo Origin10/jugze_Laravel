@@ -16,3 +16,17 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/todo',function (){
+    return response()->json([
+        ['id'=>1,'title'=>'Learn Vue js','completed'=>false],
+        ['id'=>2,'title'=>'Go to Shop','completed'=>false]
+    ]);
+})->middleware('cors:api');
+
+Route::get('todos',function (){
+    $todos = \App\Todo::all();
+    return $todos;
+})->middleware('cors:api');
+
+

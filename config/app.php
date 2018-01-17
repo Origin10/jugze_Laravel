@@ -170,6 +170,8 @@ return [
          * Package Service Providers...
          */
 
+        Barryvdh\Cors\ServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -229,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'cors' => \Barryvdh\Cors\HandleCors::class,
 
     ],
 
