@@ -13,6 +13,6 @@ class CgysTableSeeder extends Seeder
     {
         //
         Cgy::truncate();
-        factory(Cgy::class, 150)->create();
+        factory(Cgy::class, 50)->create();
     }
 }

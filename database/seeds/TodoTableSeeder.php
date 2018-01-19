@@ -13,6 +13,6 @@ class TodoTableSeeder extends Seeder
     public function run()
     {
         Todo::truncate();
-        factory(Todo::class, 150)->create();
+        factory(Todo::class, 10)->create();
     }
 }
